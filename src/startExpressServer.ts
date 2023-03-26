@@ -77,6 +77,11 @@ export const startExpressServer = (
       ...rest
     } = req.body.entry[0].changes[0].value.messages[0];
 
+    const {
+      display_phone_number,
+      phone_number_id,
+    } = req.body.entry[0].changes[0].value.metadata
+
     let event: PubSubEvent | undefined;
     let data: FreeFormObject | undefined;
 
@@ -125,6 +130,8 @@ export const startExpressServer = (
         timestamp,
         type: event,
         data,
+        display_phone_number,
+        phone_number_id
       };
 
       ['message', event].forEach((e) => PubSub.publish(e, payload));

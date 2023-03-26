@@ -8,6 +8,8 @@ import { PubSubEvent } from './utils/pubSub';
 export interface Message {
   from: string;
   name: string | undefined;
+  display_phone_number: string | undefined;
+  phone_number_id: string | undefined;
   id: string;
   timestamp: string;
   type: PubSubEvent;
